@@ -28,13 +28,4 @@ public class EditNoteDialog extends DefaultDialog {
         };
     }
 
-    @Override
-    public OnClickListener createClickListenerForNegativeButton() {
-        return new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Util.showToast(context.getString(R.string.failEditingNote), context);
-            }
-        };
-    }
 }

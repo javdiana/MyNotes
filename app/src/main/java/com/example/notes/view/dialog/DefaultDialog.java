@@ -2,6 +2,7 @@ package com.example.notes.view.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -9,6 +10,7 @@ import androidx.annotation.LayoutRes;
 
 import com.example.notes.R;
 import com.example.notes.entity.Note;
+import com.example.notes.util.Util;
 
 public abstract class DefaultDialog extends AlertDialog {
     private Context context;
@@ -17,7 +19,8 @@ public abstract class DefaultDialog extends AlertDialog {
         super(context);
         this.context = context;
     }
-
+    
+    public abstract OnClickListener createClickListenerForPositiveButton(Note newNote);
     /*
         *don't forget show dialog
      */
@@ -31,6 +34,13 @@ public abstract class DefaultDialog extends AlertDialog {
                 .create();
     }
 
-    public abstract OnClickListener createClickListenerForPositiveButton(Note newNote);
-    public abstract OnClickListener createClickListenerForNegativeButton();
+
+    public OnClickListener createClickListenerForNegativeButton(final String message) {
+        return new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Util.showToast(message, context);
+            }
+        };
+    }
 }

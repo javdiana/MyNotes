@@ -26,14 +26,15 @@ public class NoteRepository implements CrudRepository {
     }
 
     @Override
-    public void update(final Note newNote) {
+    public void update(RealmObject newNote) {
+        final Note n = (Note) newNote;
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Note note = realm.where(Note.class).equalTo("id", newNote.getId()).findFirst();
+                Note note = realm.where(Note.class).equalTo("id", n.getId()).findFirst();
                 if (note != null) {
                     note.deleteFromRealm();
-                    save(newNote);
+                    save(note);
                 }
             }
         });

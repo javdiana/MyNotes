@@ -8,9 +8,9 @@ import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 public interface CrudRepository {
-    void save(RealmObject object);
+    void save(RealmObject note);
 
-    void update(Note note);
+    void update(RealmObject note);
 
     void delete(Long id);
 

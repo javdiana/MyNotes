@@ -26,7 +26,7 @@ public class NotesActivity extends AppCompatActivity {
         @Override
         public void update(Note newNote) {
             DefaultDialog editNoteDialog = new EditNoteDialog(NotesActivity.this);
-            editNoteDialog.createDialog(getString(R.string.editingNote), R.layout.dialog_note_add_edit, editNoteDialog.createClickListenerForPositiveButton(newNote), editNoteDialog.createClickListenerForNegativeButton()).show();
+            editNoteDialog.createDialog(getString(R.string.editingNote), R.layout.dialog_note_add_edit, editNoteDialog.createClickListenerForPositiveButton(newNote), editNoteDialog.createClickListenerForNegativeButton(getString(R.string.failEditingNote))).show();
             updateNotes();
         }
 
@@ -35,7 +35,7 @@ public class NotesActivity extends AppCompatActivity {
             Note note = new Note();
             note.setId(id);
             DefaultDialog deleteNoteDialog = new DeleteNoteDialog(NotesActivity.this);
-            deleteNoteDialog.createDialog(getString(R.string.deletingNote), R.layout.dialog_delete_note, deleteNoteDialog.createClickListenerForPositiveButton(note), deleteNoteDialog.createClickListenerForNegativeButton()).show();
+            deleteNoteDialog.createDialog(getString(R.string.deletingNote), R.layout.dialog_delete_note, deleteNoteDialog.createClickListenerForPositiveButton(note), deleteNoteDialog.createClickListenerForNegativeButton(getString(R.string.failDeletingNote))).show();
             updateNotes();
         }
     };
@@ -65,8 +65,8 @@ public class NotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DefaultDialog addNoteDialog = new AddNoteDialog(NotesActivity.this);
-                addNoteDialog.createDialog(getString(R.string.addingNote), R.layout.dialog_note_add_edit, addNoteDialog.createClickListenerForPositiveButton(null), addNoteDialog.createClickListenerForNegativeButton()).show();
-                adapter.notifyDataSetChanged();
+                addNoteDialog.createDialog(getString(R.string.addingNote), R.layout.dialog_note_add_edit, addNoteDialog.createClickListenerForPositiveButton(null), addNoteDialog.createClickListenerForNegativeButton(getString(R.string.failAddingNote))).show();
+                updateNotes();
             }
         });
     }
