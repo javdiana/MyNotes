@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Notes</string>
+
+
+    <!--    dialog-->
+    <string name="positiveButton">Yes</string>
+    <string name="negativeButton">No</string>
+    <string name="failAddingNote">You don\'t add note</string>
+    <string name="failEditingNote">You don\'t edit note</string>
+    <string name="failDeletingNote">You don\'t delete note</string>
+    <string name="addingNote">Adding note</string>
+    <string name="editingNote">Editing note</string>
+    <string name="deletingNote">Editing note</string>
+    <string name="writeYourNote">Write your note</string>
+    <string name="doYouWantDeleteThisNote">Do you want delete this note?</string>
+</resources>
